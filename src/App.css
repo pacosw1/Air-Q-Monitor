@@ -1,6 +1,13 @@
 .App {
-}
+  animation: all ease-in;
 
+  transition: 4s;
+
+  animation-duration: 2s;
+}
+#city {
+  transition: 4s;
+}
 body {
   height: 400px;
   width: 300px;

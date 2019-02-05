@@ -5,7 +5,7 @@ const Navbar = props => {
   return (
     <div className="nav">
       <div>
-        <button onClick={() => getLocation()}>AirQ Monitor</button>
+        <h3 onClick={() => getLocation()}>AirQ Monitor</h3>
       </div>
       <div>
         <p>Search</p>

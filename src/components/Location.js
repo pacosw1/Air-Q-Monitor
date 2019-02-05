@@ -5,12 +5,11 @@ const Location = props => {
   let city;
   if (data.city) {
     city = data.city.name;
-  } else {
-    city = "loading";
-  }
+  } else city = "loading..";
+
   return (
     <div className="location">
-      <h3>{city}</h3>
+      <h3 id="city">{city}</h3>
     </div>
   );
 };

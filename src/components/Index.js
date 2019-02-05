@@ -5,7 +5,7 @@ const Index = props => {
   let { data } = props;
   if (data.aqi) {
     index = data.aqi;
-  }
+  } else index = "loading...";
   return (
     <div className="index">
       <div>

@@ -52,8 +52,20 @@ class App extends Component {
   }
 
   render() {
+    let res;
     let { getLocation } = this;
     let { data } = this.state;
+    if (!data) {
+      res = <div>hi</div>;
+    } else {
+      res = (
+        <div className="App">
+          <Navbar getLocation={getLocation} />
+          <Location data={data} />
+          <Index data={data} />
+        </div>
+      );
+    }
     return (
       <div className="App">
         <Navbar getLocation={getLocation} />
