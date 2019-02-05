@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 
 const Location = props => {
+  let { loc } = props;
   return (
     <div className="location">
-      <h4>Mexico City</h4>
+      <h3>Mexico City</h3>
     </div>
   );
 };

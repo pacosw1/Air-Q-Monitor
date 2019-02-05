@@ -3,10 +3,14 @@ import React, { Component } from "react";
 const Navbar = props => {
   return (
     <div className="nav">
-      <h4>AirQ Monitor</h4>
-      <p>Search</p>
-      <p>Index</p>
-      <p>About</p>
+      <div>
+        <h5>AirQ Monitor</h5>
+      </div>
+      <div>
+        <p>Search</p>
+        <p>Index</p>
+        <p>About</p>
+      </div>
     </div>
   );
 };

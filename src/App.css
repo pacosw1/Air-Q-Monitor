@@ -1,22 +1,30 @@
 .App {
-  height: 500px;
-  width: 350px;
-  border: 1px solid;
+  height: 400px;
+  width: 300px;
+  background-color: #232528;
+  color: white;
 }
 
+body {
+  background-color: #232528;
+}
+.nav p {
+  font-size: 0.8rem;
+}
 div {
-  border: 1px solid;
+  border: 0px solid;
 }
-
+.nav div {
+  display: flex;
+}
 .nav {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid;
+  align-items: baseline;
   border-color: #cacaca;
 }
 .nav * {
-  margin: 15px;
+  margin: 6px 8px;
 }
 
 .location {
@@ -24,9 +32,24 @@ div {
   justify-content: center;
   padding: 1rem 0rem;
   margin: 1rem 0rem;
+  color: black;
+  background-color: #cacaca;
+  border: 1px solid;
+  border-color: #cacaca;
+  margin: 1rem 0rem;
+  border-right: none;
+  border-left: none;
 }
 
 .index {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.index div {
+  text-align: center;
+}
+
+#desc {
+  margin: 2rem 2rem;
 }
