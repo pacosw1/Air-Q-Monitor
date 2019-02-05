@@ -1,12 +1,19 @@
-.App {
-  animation: all ease-in;
-
-  transition: 4s;
-
-  animation-duration: 2s;
+div {
+  border: 0px solid;
+  border-color: white;
 }
-#city {
-  transition: 4s;
+.poll {
+  display: flex;
+  flex-direction: column;
+}
+.polluts {
+  display: flex;
+}
+.pol-item {
+  display: flex;
+  width: 3rem;
+  align-items: center;
+  flex-direction: column;
 }
 body {
   height: 400px;
@@ -19,7 +26,7 @@ body {
   font-size: 0.8rem;
 }
 div {
-  border: 0px solid;
+  border: 1px solid;
 }
 .nav div {
   display: flex;
