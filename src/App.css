@@ -1,13 +1,13 @@
 .App {
+}
+
+body {
   height: 400px;
   width: 300px;
   background-color: #232528;
   color: white;
 }
 
-body {
-  background-color: #232528;
-}
 .nav p {
   font-size: 0.8rem;
 }

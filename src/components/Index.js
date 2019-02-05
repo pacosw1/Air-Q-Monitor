@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 
 const Index = props => {
+  let index;
+  let { data } = props;
+  if (data.aqi) {
+    index = data.aqi;
+  }
   return (
     <div className="index">
       <div>
         <h4>Air Quality Index</h4>
-        <h1>50</h1>
+        <h1>{index}</h1>
       </div>
       <div>
         <h4>Air Quality</h4>

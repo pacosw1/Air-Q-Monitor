@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 
 const Location = props => {
-  let { loc } = props;
+  let { data } = props;
+  let city;
+  if (data.city) {
+    city = data.city.name;
+  } else {
+    city = "loading";
+  }
   return (
     <div className="location">
-      <h3>Mexico City</h3>
+      <h3>{city}</h3>
     </div>
   );
 };

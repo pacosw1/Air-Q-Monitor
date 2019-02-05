@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 
 const Navbar = props => {
+  let { getLocation } = props;
   return (
     <div className="nav">
       <div>
-        <h5>AirQ Monitor</h5>
+        <button onClick={() => getLocation()}>AirQ Monitor</button>
       </div>
       <div>
         <p>Search</p>

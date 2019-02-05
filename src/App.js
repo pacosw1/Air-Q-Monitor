@@ -7,28 +7,58 @@ import Index from "./components/Index";
 
 class App extends Component {
   constructor(props) {
-    this.getLoc = this.getLoc.bind(this);
+    super(props);
+    this.getLocation = this.getLocation.bind(this);
+    //this.getGeo = this.getGeo.bind(this);
+
     this.state = {
-      location: ""
+      lat: "",
+      long: "",
+      location: "",
+      data: ""
     };
   }
 
-  getLoc() {
-    var startPos;
-  navigator.geolocation.getCurrentPosition(function(position) {
-    startPos = position;
-    console.log(startPos.coords.latitude);
+  componentWillMount() {
+    this.getLocation();
   }
-}
+  getLocation() {
+    var getLocation;
+    let lat;
+    let long;
+    navigator.geolocation.getCurrentPosition(loc => {
+      lat = loc.coords.latitude;
+      long = loc.coords.longitude;
+
+      fetch(
+        "https://api.waqi.info/feed/geo:" +
+          lat +
+          ";" +
+          long +
+          "/?token=31a30e0092bce41c286e9b790c6be1e072eb0c69"
+      ).then(response => {
+        response.json().then(data => {
+          this.setState({
+            data: data.data
+          });
+        });
+      });
+      this.setState({
+        lat: loc.coords.latitude,
+        long: loc.coords.longitude
+      });
+    });
+    //console.log(loc.coords.longitude);
+  }
 
   render() {
-    let {getLoc} = props;
+    let { getLocation } = this;
+    let { data } = this.state;
     return (
       <div className="App">
-      <button onClick={this.getLoc}/>
-        <Navbar />
-        <Location />
-        <Index />
+        <Navbar getLocation={getLocation} />
+        <Location data={data} />
+        <Index data={data} />
       </div>
     );
   }
