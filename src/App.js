@@ -4,6 +4,8 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Location from "./components/Location";
 import Index from "./components/Index";
+import Pollutants from "./components/Pollutants";
+import Search from "./components/Search";
 
 class App extends Component {
   constructor(props) {
@@ -55,20 +57,11 @@ class App extends Component {
     let res;
     let { getLocation } = this;
     let { data } = this.state;
-    if (!data) {
-      res = <div>hi</div>;
-    } else {
-      res = (
-        <div className="App">
-          <Navbar getLocation={getLocation} />
-          <Location data={data} />
-          <Index data={data} />
-        </div>
-      );
-    }
+
     return (
       <div className="App">
         <Navbar getLocation={getLocation} />
+        <Search />
         <Location data={data} />
         <Index data={data} />
       </div>
