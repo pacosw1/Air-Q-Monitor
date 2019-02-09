@@ -5,7 +5,7 @@ const Location = props => {
   let city;
   if (data.city) {
     city = data.city.name;
-  } else city = "loading..";
+  } else city = "Search for any city above";
 
   return (
     <div className="location">

@@ -7,10 +7,9 @@ const Navbar = props => {
       <div>
         <h3 onClick={() => getLocation()}>AirQ Monitor</h3>
       </div>
-      <div>
-        <p>Index Table</p>
-      </div>
+      <div />
     </div>
   );
 };
 export default Navbar;
+//{//<p>Index Table</p>}

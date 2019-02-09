@@ -11,27 +11,47 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.getLocation = this.getLocation.bind(this);
+    this.updateSearch = this.updateSearch.bind(this);
+    this.updateKeyword = this.updateKeyword.bind(this);
+    this.updateCity = this.updateCity.bind(this);
     //this.getGeo = this.getGeo.bind(this);
 
     this.state = {
-      lat: "",
-      long: "",
-      location: "",
-      data: ""
+      data: "",
+      searchData: []
     };
   }
 
-  componentWillMount() {
-    this.getLocation();
+  updateKeyword(name) {
+    this.setState({
+      keyword: name
+    });
   }
-  getLocation() {
-    var getLocation;
-    let lat;
-    let long;
-    navigator.geolocation.getCurrentPosition(loc => {
-      lat = loc.coords.latitude;
-      long = loc.coords.longitude;
 
+  updateSearch(keyword) {
+    let token = "31a30e0092bce41c286e9b790c6be1e072eb0c69";
+    console.log("running");
+
+    fetch(
+      "https://api.waqi.info/search/?token=" + token + "&keyword=" + keyword
+    ).then(response => {
+      response.json().then(res => {
+        let data = res.data;
+        let exists = data.find(item => item.station.name === keyword);
+        if (exists) {
+          let lat = exists.station.geo[0];
+          let long = exists.station.geo[1];
+          this.updateCity(lat, long);
+        }
+        this.setState({
+          searchData: data
+        });
+      });
+    });
+  }
+
+  updateCity(lat, long) {
+    if (lat && long) {
       fetch(
         "https://api.waqi.info/feed/geo:" +
           lat +
@@ -45,23 +65,35 @@ class App extends Component {
           });
         });
       });
-      this.setState({
-        lat: loc.coords.latitude,
-        long: loc.coords.longitude
-      });
+    }
+  }
+
+  getLocation() {
+    var getLocation;
+    let lat;
+    let long;
+    navigator.geolocation.getCurrentPosition(loc => {
+      lat = loc.coords.latitude;
+      long = loc.coords.longitude;
+
+      this.updateCity(lat, long);
     });
     //console.log(loc.coords.longitude);
   }
 
   render() {
     let res;
-    let { getLocation } = this;
-    let { data } = this.state;
+    let { getLocation, updateSearch } = this;
+    let { data, searchData, exists } = this.state;
+
+    if (data === "") {
+      getLocation();
+    }
 
     return (
       <div className="App">
         <Navbar getLocation={getLocation} />
-        <Search />
+        <Search searchData={searchData} updateSearch={updateSearch} />
         <Location data={data} />
         <Index data={data} />
       </div>

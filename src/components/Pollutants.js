@@ -2,30 +2,16 @@ import React, { Component } from "react";
 
 const Pollutants = props => {
   let { polluts } = props;
-  let co;
-  let h;
-  let no2;
-  let o3;
-  let p;
-  let temp;
-  let time;
-  let t;
+  let co = "..";
+  let no2 = "..";
+  let o3 = "..";
+  let temp = "..";
+
   if (polluts) {
-    co = polluts.co.v;
-    h = polluts.h.v;
-    t = polluts.t.v;
-    no2 = polluts.no2.v;
-    o3 = polluts.o3.v;
-    p = polluts.p.v;
-    temp = polluts.t.v;
-  } else {
-    co = "..";
-    h = "..";
-    no2 = "..";
-    o3 = "..";
-    p = "..";
-    t = "..";
-    time = "..";
+    if (polluts.co) co = polluts.co.v;
+    if (polluts.no2) no2 = polluts.no2.v;
+    if (polluts.o3) o3 = polluts.o3.v;
+    if (polluts.t) temp = polluts.t.v;
   }
   return (
     <div className="poll">
@@ -36,7 +22,7 @@ const Pollutants = props => {
         </div>
         <div className="pol-item">
           <p>Temperature (C) </p>
-          <h4>{t}</h4>
+          <h4>{temp}</h4>
         </div>
         <div className="pol-item">
           <p>Ozone (o3)</p>

@@ -2,26 +2,24 @@ import React, { Component } from "react";
 
 const Search = props => {
   let { updateSearch, searchData } = props;
-  console.log(searchData);
   let results;
-  if (searchData) {
+  if (searchData.length > 1) {
     results = searchData.map(station => {
       return (
-        <li key={station.uid}>
-          <h5>{station.station.name}</h5>
-        </li>
+        <option className="option" key={station.uid}>
+          {station.station.name}
+        </option>
       );
     });
   }
   return (
     <div className="search">
       <input
+        list="results"
         onChange={e => updateSearch(e.target.value)}
         placeholder="Search for a city"
       />
-      <div className="results">
-        <ul>{results}</ul>
-      </div>
+      <datalist id="results">{results}</datalist>
     </div>
   );
 };

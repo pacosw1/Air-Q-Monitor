@@ -8,6 +8,7 @@ div {
 }
 .polluts {
   display: flex;
+  align-items: baseline;
 }
 .pol-item {
   display: flex;
@@ -25,6 +26,7 @@ div {
 }
 body {
   height: 500px;
+
   width: 300px;
   background-color: #232528;
   color: white;
@@ -54,10 +56,10 @@ div {
   padding: 1rem 0rem;
   margin: 1rem 0rem;
   color: black;
-  background-color: #e6e6e6;
-  border: 1px solid;
-
-  margin: 8px;
+  background-color: #fdfdfd;
+  min-height: 60px;
+  max-height: 60px;
+  align-items: center;
 
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
@@ -85,7 +87,7 @@ div {
 }
 
 .lay-content-item p {
-  text-align: justify;
+  text-align: center;
   margin: 0px 8px;
 }
 
@@ -106,16 +108,38 @@ div {
 }
 .search {
   display: flex;
-  width: 100%;
+  flex-direction: column;
+  border: 1px solid;
   color: white;
+  margin: 0.6rem;
 }
 
-.search input {
+.search datalist {
   border: none;
+
   box-shadow: none;
-  padding: 0.6rem;
-  background-color: #f5f5f5;
+  padding: 0.6rem 0rem;
+  background-color: #ffffff;
 
   width: 100%;
-  margin: 0px 8px;
+}
+
+.App {
+  height: 500px;
+  width: 300px;
+}
+
+.option {
+  display: flex;
+  justify-content: space-between;
+}
+
+input {
+  padding: 0.6rem;
+  border: none;
+}
+
+#city {
+  margin: 0rem 1.5rem;
+  text-align: center;
 }
